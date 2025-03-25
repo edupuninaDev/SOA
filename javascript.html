@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var cadena = "hola mundo";
+        console.log( cadena );
+        // strinfy convierte un tipo de javascript a Json
+        var myJS = JSON.stringify( cadena );
+        console.log( myJS );
+
+        var entero = 45;
+        console.log( entero );
+        console.log( typeof ( entero ) );
+
+        var myJSEntero = JSON.stringify( entero );
+        console.log( myJSEntero );
+        console.log( typeof ( myJS ) );
+        var objJS = JSON.parse( myJSEntero );
+        console.log( objJS );
+        console.log( typeof ( objJS ) );
+
+        var boleano = true;
+        console.log( boleano );
+        console.log( typeof ( boleano ) );
+
+        var mysJSBoleano = JSON.stringify( boleano );
+        console.log( mysJSBoleano );
+        console.log( typeof ( mysJSBoleano ) );
+
+        var arreglo = ["lunes", "martes", "miércoles"];
+        console.log( arreglo );
+        console.log( typeof ( arreglo ) );
+
+        var myJSArreglo = JSON.stringify( arreglo );
+        console.log( myJSArreglo );
+        console.log( typeof ( myJSArreglo ) );
+
+        var arregloObjeto = [{ "nombre": "Carlos", "apellido": "Nuñez", "edad": 43, "educación": [{ "primaria": "La Salle", "secundaria": "Bolivar", "superior": "UTA" }] },
+        { "nombre": "Juan", "apellido": "Perez", "edad": 23, "educación": [{ "primaria": "Gonzales Suarez", "secundaria": "Guayaquil", "superior": "UTA" }] },
+        { "nombre": "Maria", "apellido": "Gomez", "edad": 33, "educación": [{ "primaria": "La Salle", "secundaria": "Bolivar", "superior": "UTA" }] }
+        ];
+
+        console.log( arregloObjeto[0].educación[0].primaria );
+        console.log( typeof ( arregloObjeto ) );
+
+        var myJSArregloObjeto = JSON.stringify( arregloObjeto );
+        console.log( myJSArregloObjeto );
+        console.log( typeof ( myJSArregloObjeto ) );
+
+
+        for ( const item of arregloObjeto ) {
+            console.log( item.nombre + " - " + item.educación[0].primaria );
+        }
+
+        var objetoJS = JSON.parse( myJSArregloObjeto );
+        console.log( objetoJS );
+        console.log( typeof ( objetoJS ) );
+
+    </script>
+</body>
+
+</html>
