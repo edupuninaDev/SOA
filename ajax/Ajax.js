@@ -23,7 +23,7 @@ function newUser() {
 }
 
 function editUser() {
-    var row = $( '#dg' ).datagrid( 'getSelected' );
+    let row = $( '#dg' ).datagrid( 'getSelected' );
     if ( row ) {
         $( '#dlg' ).dialog( 'open' ).dialog( 'center' ).dialog( 'setTitle', 'Edit User' );
         $( '#fm' ).form( 'load', row );
@@ -59,15 +59,8 @@ function saveUser() {
                     contentType: 'application/json',
                     data: JSON.stringify( jsonData ),
                     success: function ( result ) {
-                        if ( !result.success ) {
-                            $( '#dlg' ).dialog( 'close' );
-                            $( '#dg' ).datagrid( 'reload' );
-                        } else {
-                            $.messager.show( {
-                                title: 'Error',
-                                msg: result.message
-                            } );
-                        }
+                        $( '#dlg' ).dialog( 'close' );
+                        $( '#dg' ).datagrid( 'reload' );
                     },
 
                 } );
@@ -79,7 +72,7 @@ function saveUser() {
 
 
 function destroyUser() {
-    var row = $( '#dg' ).datagrid( 'getSelected' );
+    let row = $( '#dg' ).datagrid( 'getSelected' );
     if ( row ) {
         $.messager.confirm( 'Confirmar', '¿Estás seguro de que deseas eliminar este estudiante?', function ( r ) {
             if ( r ) {
