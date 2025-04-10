@@ -1,0 +1,55 @@
+{
+    "contenedores": [
+        {
+            "tipo": "grande",
+            "envases": ["grande ancho", "grande alto"]
+        },
+        {
+            "tipo": "mediano",
+            "envases": ["mediano ancho", "mediano alto", "pequeño"]
+        },
+        {
+            "tipo": "vertical",
+            "envases": ["grande alto", "mediano alto"]
+        }
+    ],
+    "envases": [
+        {
+            "tipo": "grande ancho",
+            "valodoPara":"Alimentos",
+            "Alimentos": ["agua", "leche", "aceite", "vinagre"]
+        },
+        {
+            "tipo": "grande alto",
+            "valodoPara":"Alimentos",
+            "Alimentos": ["agua", "leche", "aceite", "vinagre"]
+        },
+        {
+            "tipo": "mediano ancho",
+            "valodoPara":"Alimentos",
+            "Alimentos": ["agua", "leche", "aceite", "vinagre"]
+        },
+        {
+            "tipo": "mediano alto",
+            "valodoPara":"Sustancias Corrosivas",
+            "Sustancias Corrosivas": ["aguarrás", "vinagre", "amoniaco"]
+        },
+        {
+            "tipo": "pequeño",
+            "valodoPara":"Sustancias Corrosivas",
+            "Sustancias Corrosivas": ["aguarrás", "vinagre", "amoniaco"]
+        }
+    ],
+    "liquidos": [
+        "agua",
+        "leche",
+        "lejía",
+        "amoniaco",
+        "jabón",
+        "aguarrás",
+        "gasolina",
+        "aceite",
+        "vinagre",
+        "alcohol"
+    ]
+}

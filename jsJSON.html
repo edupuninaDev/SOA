@@ -1,0 +1,28 @@
+<!-- XMLHTTPRequest -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>JSON</title>
+</head>
+
+<body>
+    <script>
+        var Http = new XMLHttpRequest();
+        Http.onreadystatechange = function () {
+            if ( Http.readyState == 4 && Http.status == 200 ) {
+                console.log( Http.status );
+                console.log( Http.readyState );
+                var objeto = JSON.parse( Http.responseText );
+                console.log( objeto );
+                console.log( objeto.educacion[0].primaria );
+                console.log( objeto.educacion );
+            }
+        };
+        Http.open( "GET", "json.json" );
+        Http.send();
+
+    </script>
+</body>
+
+</html>

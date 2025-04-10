@@ -1,0 +1,19 @@
+{
+  "nombre": "carlos",
+  "apellido": "nuñez",
+  "edad": 43,
+  "educacion": [
+    {
+      "primaria": "La Salle",
+      "anio": "200-2006"
+    },
+    {
+      "secundaria": "bolivar",
+      "anio": "200-2006"
+    },
+    {
+      "superior": "UTA",
+      "anio": "200-2006"
+    }
+  ]
+}

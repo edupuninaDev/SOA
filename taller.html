@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var rep = new XMLHttpRequest();
+        rep.onreadystatechange = function () {
+            if ( rep.readyState == 4 && rep.status == 200 ) {
+                let obj = JSON.parse( rep.responseText );
+                listMovieInfo( obj );
+                listMovieTitlesAndActors( obj );
+                filterMoviesBySynopsis( obj, ["criminal", "joker"] );
+                findMoviesByActor( obj, "Joaquin Phoenix" );
+                findMoviesByRaring( obj, 2010, 2020 );
+            }
+        };
+
+        function listMovieInfo( obj ) {
+            console.log( "Listar información: Listar el título, año y duración de todas las películas" );
+            for ( const item of obj ) {
+                console.log( "Titulo: " + item.title + " - " + "Anio: " + item.year + " - " + "Duracion: " + item.duration );
+            }
+        }
+
+        function listMovieTitlesAndActors( obj ) {
+            console.log( "información: Mostrar los títulos de las películas y el número de actores/actrices que tiene cada una." );
+            for ( const item of obj ) {
+                console.log( "Titulo: " + item.title + " - " + "Numero de actores: " + item.actors.length );
+            }
+        }
+
+        function filterMoviesBySynopsis( obj, wordsInclude ) {
+            console.log( "Buscar o filtrar información: Mostrar las películas que contengan en la sinopsis dos palabras dadas." );
+            for ( const item of obj ) {
+                const words = item.storyline.toLowerCase().match( /\b\w+\b/g );
+                if ( wordsInclude.every( word => words.includes( word ) ) ) {
+                    console.log( "Titulo: " + item.title + " - " + "Sinopsis: " + item.storyline );
+                }
+            }
+        }
+
+        function findMoviesByActor( obj, actor ) {
+            console.log( "Buscar información relacionada: Mostrar las películas en las que ha trabajado un actor dado." );
+            for ( const item of obj ) {
+                if ( item.actors.includes( actor ) ) {
+                    console.log( "Titulo: " + item.title + " - " + "Actores: " + item.actors );
+                }
+            }
+        }
+
+        function findMoviesByRaring( obj, date1, date2 ) {
+            console.log( "libre: Mostrar el título y la url del póster de las tres películas con una media de puntuaciones más alta y lanzadas entre dos fechas dadas." );
+            let movies = obj.filter( item => item.year >= date1 && item.year <= date2 );
+            movies.sort( ( a, b ) => b.ratings.reduce( ( acc, val ) => acc + val ) / b.ratings.length - a.ratings.reduce( ( acc, val ) => acc + val ) / a.ratings.length );
+            for ( let i = 0; i < 3 && i < movies.length; i++ ) {
+                console.log( "Titulo: " + movies[i].title + " - " + "Url: " + movies[i].poster );
+            }
+
+        }
+        rep.open( "GET", "movies.json" );
+        rep.send();
+    </script>
+</body>
+
+</html>
